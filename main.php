@@ -20,7 +20,7 @@
         <nav>
             <a href="./index.php"><img src="./src/assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
             <div class="button-div">
-                <?php if($_SESSION["auth"]==1) echo '<button class="nav-button">Administration</button>'?>
+                <?php if($_SESSION["auth"]==1) echo '<a href="./src/components/administration.php"><button class="nav-button">Administration</button></a>'?>
                 <button class="nav-button">Vocabulary</button>
                 <button class="nav-button">Flashcards</button>
                 <button class="nav-button">Game</button>

@@ -4,7 +4,6 @@ body {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
 .main-div {
     height: 100%;
     display: flex;
@@ -28,22 +27,18 @@ nav {
     background-color: #fff;
     font-size: 1em;
 }
-
 #logo-img {
     width: 200px;
     margin-bottom: 15px;
 }
-
 #user-img {
     height: 40px;
     width: 40px;
 }
-
 #user-img:hover {
     background-color: #E3AF34;
     border-radius: 90%;
 }
-
 .nav-button, .logout-button {
     height: 45px;
     width: 120px;
@@ -55,7 +50,6 @@ nav {
     font-weight: bold;
     transition: color 0.2s, border-bottom 0.2s;
 }
-
 .nav-button:hover {
     color: #E3AF34;
     border-bottom: 2px solid #E3AF34;
@@ -64,29 +58,23 @@ nav {
     color: #E3AF34;
     border-bottom: 2px solid #E3AF34;
 }
-
 .logout-button {
     border: 2px solid #427A37;
 }
-
 .logout-button:hover,  .logout-button:focus{
     color: #E3AF34;
     border: 2px solid #E3AF34;
     background-color: #e2e2e2;
 }
-
 .button-div {
     width: 60%;
     display: flex;
     justify-content: space-around;
 }
-
 .user-name {
     height: 45px;
     width: 120px;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
     color: #427A37;
     font-weight: bold;
 }
@@ -102,7 +90,6 @@ content {
     justify-content: space-around;
 
 }
-
 .login-form {
     display: flex;
     flex-direction: column;
@@ -111,13 +98,11 @@ content {
     width: 300px;
     border-radius: 4px;;
 }
-
 .login-form label {
     margin: 10px;
     color:#427A37;
     font-weight: bold;
 }
-
 .login-form input {
     margin: 0 10px 10px 10px;
     border-radius: 4px;
@@ -126,14 +111,12 @@ content {
     height: 20px;
     padding: 5px;
 }
-
 .form-button-div {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 10px;
 }
-
 .form-button-div button, .reg-button {
     height: 50px;
     width: 120px;
@@ -147,7 +130,6 @@ content {
     color: #fff;
     transition: color 0.3s, background-color 0.3s;
 }
-
 .form-button-div button:hover{
     color:#427A37;
     background-color:  #E3AF34;
@@ -168,20 +150,19 @@ content {
     transition: color 0.3s, background-color 0.3s;
     margin: 10px auto 0 auto;
 }
-
 .reg-button:hover {
     color:#427A37;
     background-color:  #E3AF34;
 
 }
-
 .not-in-form {
     background-color:  #E3AF34;
     margin-top: 15px;
 }
-
 .not-in-form:hover {
     background-color: #427A37 ;
     color: #E3AF34;
-
 }
+
+/*Administration page*/
+

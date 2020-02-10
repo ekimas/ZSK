@@ -12,8 +12,27 @@
     <title>Techl4ng</title>
 
     <link rel="stylesheet" href="../styles/style.css">
-    <link rel="shortcut icon" href="..assets/favicon.ico">
+    <link rel="shortcut icon" href="../assets/favicon.ico">
 
+    <style>
+    table {
+        border-collapse: collapse;
+        background-color:#fff;
+    }
+    th, td {
+        border-bottom: 1px solid #427A37;
+    }
+    th, td {
+        padding:10px;
+    }
+
+    .div-table {
+        border: 2px solid #427A37;
+        padding: 35px;
+        background-color:#fff;
+        border-radius: 4px;
+    }
+    </style>
 
 </head>
 <body>
@@ -21,7 +40,7 @@
         <nav>
             <a href="../../index.php"><img src="../assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
             <div class="button-div">
-                <?php if($_SESSION["auth"]==1) echo '<button class="nav-button">Administration</button>'?>
+                <?php if($_SESSION["auth"]==1) echo '<a href="./administration.php"><button class="nav-button">Administration</button></a>'?>
                 <button class="nav-button">Vocabulary</button>
                 <button class="nav-button">Flashcards</button>
                 <button class="nav-button">Game</button>
@@ -35,6 +54,7 @@
         </nav>
         <div class="main-div">
         <content>
+        <div class="div-table">
             <?php    
 
     $sql = "SELECT `nickname`, `mail`, `name`, `surname` FROM `users` WHERE `id` LIKE ". $_SESSION["userid"];
@@ -62,6 +82,7 @@ ROW;
 
     echo "</table>";
             ?>
+            </div>
         </content>
     </div>
 </body>
