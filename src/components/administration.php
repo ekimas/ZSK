@@ -69,6 +69,9 @@
         <th>Name</th>
         <th>Surname</th>
         <th>Type of profile</th>
+        <th></th>
+        <th></th>
+        <th></th>
     </tr>
 TABLE;
 
@@ -87,6 +90,30 @@ ROW;
             echo "<td>User</td>";
         else echo "<td>Teacher</td>";
     
+    echo <<<BUTTONS
+        <td>
+        <form action="../../scripts/change_auth.php" method="post" >
+BUTTONS;
+    echo '<input type="hidden" value="'.$row["id"].'" name="idi">';    
+    echo <<<BUTTONS2
+            <button>EDIT</button></a>
+        </form>
+        </td>
+        <td>
+            
+            <select name="auth">
+                <option value="2">User</option>
+                <option value="3">Teacher</option>
+                <option value="1">Admin</option>
+            </select>
+            <button type="submit">CHANGE</button>
+
+        </td>
+        <td>
+            <a href=""><button>DELETE</button></a>
+        </td>
+BUTTONS2;
+
     echo "</tr>";
     }
 
