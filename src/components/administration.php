@@ -2,6 +2,7 @@
     session_start();
     if(!isset($_SESSION["userid"])) header("Location: ../../index.php");
     require_once("../../scripts/connect.php");
+    unset($_SESSION["change-id"]);
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -93,26 +94,18 @@ ROW;
     echo <<<BUTTONS
         <td>
         <form action="../../scripts/change_auth.php" method="post" >
-BUTTONS;
-    echo '<input type="hidden" value="'.$row["id"].'" name="idi">';    
-    echo <<<BUTTONS2
-            <button>EDIT</button></a>
+        <input type="hidden" value="$row[id]" name="idi">    
+        <button>EDIT</button></a>
         </form>
+BUTTONS;
+    echo <<<BUTTONS2
         </td>
         <td>
-            
-            <select name="auth">
-                <option value="2">User</option>
-                <option value="3">Teacher</option>
-                <option value="1">Admin</option>
-            </select>
-            <button type="submit">CHANGE</button>
+        <a href=""><button>DELETE</button></a>
+        </td>
 
-        </td>
-        <td>
-            <a href=""><button>DELETE</button></a>
-        </td>
 BUTTONS2;
+    $_SESSION["change-id"] = $row["id"];
 
     echo "</tr>";
     }

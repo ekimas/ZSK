@@ -68,18 +68,7 @@
             <div class="div-table">
 <?php    
 
-    if(isset($_POST["idi"]))
-        $id = $_POST["idi"];
-    else
-        $id = $_GET["idi"];
     
-    $sql = "SELECT * FROM `users` WHERE `id` LIKE '$id'";
-    $result = mysqli_query($con, $sql); 
-
-    $stmt = $con->prepare("SELECT * FROM `users` WHERE `id` LIKE ?");
-    $stmt->bind_param("s", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
     
 
 
@@ -118,8 +107,8 @@ ROW;
 
     echo <<<CHANGE
     <div class="new">
-                <form action="" name="ch-form" method="get">
-                    <input type="hidden" value="'.$row[id].'" name="idi">
+                <form action="" method="post">
+                    
                     <label for="new_nick">New nickname</label>
                     <input type="text" name="new_nick">
                     <label for="new_nick">New mail</label>
@@ -135,14 +124,9 @@ ROW;
                         <option value="1">Admin</option>
                     </select>
                     <button type="submit">SUBMIT</button>
+                </form>
+            </div>
 CHANGE;
-    echo    "</form></div>";
-
-    if(!empty($_GET["new_nick"]) && !empty($_GET["new_mail"]) && !empty($_GET["new_name"]) && !empty($_GET["new_surname"]) && !empty($_GET["auth"]))
-    {
-        $change_query = "INSERT INTO `users` ( `nickname`, `mail`, `name`, `surname`, `auth_id`) VALUES ( $_GET[new_nick], $_GET[new_mail], $_GET[new_name], $_GET[new_surname], $_GET[auth]) WHERE `id` =". $id.";";
-        $change_result = mysqli_query($con, $change_query); 
-    }
 ?>
             </div>
         </content>
