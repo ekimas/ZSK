@@ -92,14 +92,13 @@ ROW;
         else echo "<td>Teacher</td>";
     
     echo <<<BUTTONS
-        <td>
-        <form action="../../scripts/change_auth.php" method="post" >
-        <input type="hidden" value="$row[id]" name="idi">    
-        <button>EDIT</button></a>
-        </form>
+        <td>   
+        <a href="../../scripts/change_auth.php/?id=$row[id]"><button>EDIT</button></a>
+        </td>
+
 BUTTONS;
     echo <<<BUTTONS2
-        </td>
+        
         <td>
         <a href=""><button>DELETE</button></a>
         </td>
