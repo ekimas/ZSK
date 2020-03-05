@@ -68,7 +68,7 @@ if(isset($_GET["id"])) {
     echo <<<FORMUPDATE
     <h3>Aktualizacja</h3>
     ID: $user[id] <br><br>
-    <form action="" method="post">
+    <form action="./../update_user.php" method="post">
     <input type="text" name="nick" value="$user[nickname]"><br><br>
     <input type="text" name="mail" value="$user[mail]"><br><br>
     <input type="text" name="name" value="$user[name]"><br><br>
