@@ -26,7 +26,7 @@
         <label for="mail">MAIL</label>
         <input type="text" name="mail" required>
         <label for="password">PASSWORD</label>
-        <input type="text" name="password" required>
+        <input type="password" name="password" required>
         <label for="nickname">NICKNAME</label>
         <input type="text" name="nickname" required>
         <label for="surname">SURNAME</label>

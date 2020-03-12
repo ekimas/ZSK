@@ -33,6 +33,47 @@
         background-color:#fff;
         border-radius: 4px;
     }
+
+    h2 {
+        color: #427A37;
+    }
+    form {
+        display:flex;
+        flex-direction:column;
+    }
+    form input {
+        border-radius: 4px;
+        border: 1px solid rgba(0,0,0,0.15);
+        box-shadow: none;
+        height: 20px;
+        padding: 5px;
+    }
+    form label {
+        margin-bottom: 5px;
+        color:#427A37;
+        font-weight: bold;
+    }
+    form select {
+        border-radius: 4px;
+        border: 1px solid rgba(0,0,0,0.15);
+        padding: 5px;
+    }
+    #button_change {
+        border-radius: 4px;
+        padding: 5px;
+        height: 50px;
+        cursor: pointer;
+        border: 2px solid #427A37;
+        background-color: #fff;
+        color: #427A37;
+        font-weight: bold;
+        transition: color 0.2s, border-bottom 0.2s;
+    }
+    #button_change:hover {
+        color: #E3AF34;
+        border: 2px solid #E3AF34;
+        background-color: #e2e2e2;
+    }
     </style>
 </head>
 <body>
@@ -55,55 +96,70 @@
         <content>
             <div class="div-table">
 
-            <?php    
+<?php    
 
 if(isset($_GET["id"])) {
 
     $id = $_GET["id"];
     $sql1 = "SELECT * FROM `users` WHERE id = $id";
     $result1 = mysqli_query($con, $sql1);
-    if($result1){
-    $user = mysqli_fetch_assoc($result1);
+    
+    if($result1)
+    {
+        $user = mysqli_fetch_assoc($result1);
 
-    echo <<<FORMUPDATE
-    <h3>Aktualizacja</h3>
-    ID: $user[id] <br><br>
-    <form action="./../update_user.php" method="post">
-    <input type="text" name="nick" value="$user[nickname]"><br><br>
-    <input type="text" name="mail" value="$user[mail]"><br><br>
-    <input type="text" name="name" value="$user[name]"><br><br>
-    <input type="text" name="surname" value="$user[surname]"><br><br>
-    <select name="auth" value="$user[auth_id]">
+        $back = $_GET["back"];
+
+        echo "<h2>Aktualizacja</h2>";
+        
+        if($back!=1)
+            echo "ID: $user[id] <br><br>";
+    
+        echo <<<FORMUPDATE
+        <form action="./../update_user.php/?back=$back" method="post">
+            <label for="nick">Nickname</label>
+            <input type="text" name="nick" value="$user[nickname]"><br>
+            <label for="mail">Mail</label>
+            <input type="text" name="mail" value="$user[mail]"><br>
+            <label for="name">Name</label>
+            <input type="text" name="name" value="$user[name]"><br>
+            <label for="surname">Surname</label>
+            <input type="text" name="surname" value="$user[surname]"><br>
+            <label for="auth">Authorisation</label>
+            <select name="auth" value="$user[auth_id]">
 FORMUPDATE;
-        if($user["auth_id"]==1){
+        if($user["auth_id"]==1)
+        {
         echo <<<FORMUPDATE2
-        <option value="1" selected="selected">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </select>
-    <input type="hidden" name="id" value="$id"><br><br>
-    <input type="submit" name="button" value="Aktualizuj">
-  </form>
+            <option value="1" selected="selected">1 - Admin</option>
+            <option value="2">2 - User</option>
+            <option value="3">3 - Teacher</option>
+        </select>
+        <input type="hidden" name="id" value="$id"><br>
+        <input type="submit" name="button" value="Aktualizuj" id="button_change">
+    </form>
 FORMUPDATE2;
-    } else if($user["auth_id"]==2){
+        } 
+        else if($user["auth_id"]==2)
+        {
         echo <<<FORMUPDATE2
-        <option value="1">1</option>
-        <option value="2" selected="selected">2</option>
-        <option value="3">3</option>
-    </select>
-    <input type="hidden" name="id" value="$id"><br><br>
-    <input type="submit" name="button" value="Aktualizuj">
-  </form>
+            <option value="1">1 - Admin</option>
+            <option value="2" selected="selected">2 - User</option>
+            <option value="3">3 - Teacher</option>
+        </select>
+        <input type="hidden" name="id" value="$id"><br>
+        <input type="submit" name="button" value="Aktualizuj" id="button_change">
+    </form>
 FORMUPDATE2;
-    } else 
-    echo <<<FORMUPDATE2
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3" selected="selected">3</option>
-    </select>
-    <input type="hidden" name="id" value="$id"><br><br>
-    <input type="submit" name="button" value="Aktualizuj">
-  </form>
+        } else 
+        echo <<<FORMUPDATE2
+            <option value="1">1 - Admin</option>
+            <option value="2">2 - User</option>
+            <option value="3" selected="selected">3 - Teacher</option>
+        </select>
+        <input type="hidden" name="id" value="$id"><br>
+        <input type="submit" name="button" value="Aktualizuj" id="button_change">
+    </form>
 FORMUPDATE2;
     }
 }

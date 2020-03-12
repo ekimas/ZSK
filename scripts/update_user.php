@@ -15,8 +15,12 @@ if (isset($_POST['button']) && !empty($_POST['nick']) && !empty($_POST['mail']) 
 # 
   if(!mysqli_query($con, $sql))
     echo mysqli_error($con);
-else
-  header("Location: ./../src/components/administration.php");
+  else
+    if($_GET["back"]==0)
+      header("Location: ./../../src/components/administration.php");
+    else
+      header("Location: ./../../src/components/profile.php");
+
 
 }
 

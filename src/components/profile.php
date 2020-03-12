@@ -59,27 +59,37 @@
 
     $sql = "SELECT `nickname`, `mail`, `name`, `surname` FROM `users` WHERE `id` LIKE ". $_SESSION["userid"];
     $result = mysqli_query($con, $sql); 
+    
+    $id = $_SESSION["userid"];
+    $back = 1;
+    
     echo <<<TABLE
     <table>
     <tr>
+        <th>Nickname</th>
+        <th>Mail</th>
         <th>Name</th>
         <th>Surname</th>
-        <th>Mail</th>
-        <th>Nickname</th>
+        <th></th>
     </tr>
 TABLE;
 
     while ($row = mysqli_fetch_assoc($result)) {    
     echo <<<ROW
     <tr>
+        <td>$row[nickname]</td>
+        <td>$row[mail]</td>
         <td>$row[name]</td>
         <td>$row[surname]</td>
-        <td>$row[mail]</td>
-        <td>$row[nickname]</td>
+        <td>   
+        <a href="../../scripts/change_auth.php/?id=$id&back=$back"><button>EDIT</button></a>
+        </td>
     </tr>
+    
 ROW;
     }
 
+    
     echo "</table>";
             ?>
             </div>

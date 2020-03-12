@@ -93,14 +93,14 @@ ROW;
     
     echo <<<BUTTONS
         <td>   
-        <a href="../../scripts/change_auth.php/?id=$row[id]"><button>EDIT</button></a>
+        <a href="../../scripts/change_auth.php/?id=$row[id]&back=0"><button>EDIT</button></a>
         </td>
 
 BUTTONS;
     echo <<<BUTTONS2
         
         <td>
-        <a href=""><button>DELETE</button></a>
+        <a href="../../scripts/delete_user.php/?id=$row[id]"><button>DELETE</button></a>
         </td>
 
 BUTTONS2;
