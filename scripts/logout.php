@@ -4,6 +4,6 @@
     unset($_SESSION['nick']);
     unset($_SESSION["auth"]);
     session_destroy();
-    header("Location: ../index.php");
+    header("Location: ./../index.php");
 
 ?>

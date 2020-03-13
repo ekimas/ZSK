@@ -41,12 +41,12 @@
             <a href="../../index.php"><img src="../assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
             <div class="button-div">
                 <?php if($_SESSION["auth"]==1) echo '<a href="./administration.php"><button class="nav-button">Administration</button></a>'?>
-                <button class="nav-button">Vocabulary</button>
-                <button class="nav-button">Flashcards</button>
-                <button class="nav-button">Game</button>
+                <a href="./vocabulary.php"><button class="nav-button">Vocabulary</button></a>
+                <a href="./flashcards.php"><button class="nav-button">Flashcards</button></a>
+                <a href="./game.php"><button class="nav-button">Game</button></a>
                 <?php
                     if(isset($_SESSION["nick"]))
-                    echo '<div class="user-name">'.$_SESSION["nick"]."</div>";
+                    echo '<div class="user-name"><p>'.$_SESSION["nick"]."</p></div>";
                 ?>
                 <a href="#"><img src="../assets/user.png" alt="User" id="user-img"></a>
                 <form action="../../scripts/logout.php" method="get"><button class="nav-button logout-button">Logout</button></form>

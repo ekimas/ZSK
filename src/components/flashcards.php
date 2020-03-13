@@ -39,9 +39,9 @@
     <nav>
         <a href="../../index.php"><img src="../assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
         <div class="button-div">
-            <?php if($_SESSION["auth"]==1) echo '<a href="#"><button class="nav-button">Administration</button></a>'?>
+            <?php if($_SESSION["auth"]==1) echo '<a href="./administration.php"><button class="nav-button">Administration</button></a>'?>
             <a href="./vocabulary.php"><button class="nav-button">Vocabulary</button></a>
-            <a href="./flashcards.php"><button class="nav-button">Flashcards</button></a>
+            <a href="#"><button class="nav-button">Flashcards</button></a>
             <a href="./game.php"><button class="nav-button">Game</button></a>
             <?php
                 if(isset($_SESSION["nick"]))
@@ -53,65 +53,11 @@
     </nav>
     <div class="main-div">   
         <content>
-            <div class="div-table">
+
 <?php    
-
-    $sql = "SELECT * FROM `users` WHERE `id` NOT LIKE ". $_SESSION["userid"];
-    $result = mysqli_query($con, $sql); 
-
-    echo "<table>";
-    
-
-    echo <<<TABLE
-    <tr>
-        <th>Id</th>
-        <th>Nickname</th>
-        <th>Mail</th>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Type of profile</th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
-TABLE;
-
-    while ($row = mysqli_fetch_assoc($result)) {    
-    echo <<<ROW
-    <tr>
-        <td>$row[id]</td>
-        <td>$row[nickname]</td>
-        <td>$row[mail]</td>
-        <td>$row[name]</td>
-        <td>$row[surname]</td>
-ROW;
-        if($row["auth_id"]==1)        
-            echo "<td>Admin</td>";
-        else if($row["auth_id"]==2)        
-            echo "<td>User</td>";
-        else echo "<td>Teacher</td>";
-    
-    echo <<<BUTTONS
-        <td>   
-        <a href="../../scripts/change_auth.php/?id=$row[id]&back=0"><button>EDIT</button></a>
-        </td>
-
-BUTTONS;
-    echo <<<BUTTONS2
-        
-        <td>
-        <a href="../../scripts/delete_user.php/?id=$row[id]"><button>DELETE</button></a>
-        </td>
-
-BUTTONS2;
-    $_SESSION["change-id"] = $row["id"];
-
-    echo "</tr>";
-    }
-
-    echo "</table>";
+    echo "Flashcards";
 ?>
-            </div>
+
         </content>
     </div>
 </body>

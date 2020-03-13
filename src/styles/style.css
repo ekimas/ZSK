@@ -74,7 +74,7 @@ nav {
 .user-name {
     height: 45px;
     width: 120px;
-    display: flex;
+    text-align: center;
     color: #427A37;
     font-weight: bold;
 }
@@ -89,6 +89,34 @@ content {
     align-items: center;
     justify-content: space-around;
 }
+.in-content {
+    width:528px;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.main-content-div {
+    height: 90px;
+    width: 240px;
+    padding: 10px;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    border:0;
+    border: 2px solid #427A37;
+    background-color: #fff;
+    color: #427A37;
+    font-weight: bold;
+    transition: color 0.2s, border 0.2s, background-color 0.2s;
+}
+.main-content-div:hover {
+    color: #E3AF34;
+    border: 2px solid #E3AF34;
+    background-color: #e2e2e2;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
