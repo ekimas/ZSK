@@ -175,6 +175,9 @@ FORMUPDATE2;
                 <input type="text" name="name" value="$user[name]"><br>
                 <label for="surname">Surname</label>
                 <input type="text" name="surname" value="$user[surname]"><br>
+                <input type="hidden" name="id" value="$id"><br>
+                <input type="hidden" name="auth" value="$user[auth_id]"><br>
+                <input type="submit" name="button" value="Aktualizuj" id="button_change">
             </form>
 FORMUPDATE;
         }

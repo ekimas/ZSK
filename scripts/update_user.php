@@ -1,7 +1,9 @@
 <?php
 
+ $back =  $_GET["back"];
+ echo $back;
 
-if (isset($_POST['button']) && !empty($_POST['nick']) && !empty($_POST['mail']) && !empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['auth'])) {
+if (!empty($_POST['nick']) && !empty($_POST['mail']) && !empty($_POST['name']) && !empty($_POST['surname'])) {
   $nick = $_POST['nick'];
   $mail = $_POST['mail'];
   $name = $_POST['name'];
@@ -12,11 +14,12 @@ if (isset($_POST['button']) && !empty($_POST['nick']) && !empty($_POST['mail']) 
   require_once("./connect.php");
 
   $sql = "UPDATE `users` SET `nickname`=\"$nick\", `mail` = \"$mail\", `name`=\"$name\", `surname`=\"$surname\", `auth_id`=$auth WHERE `id`=$id;";
-# 
+
+  echo mysqli_error($con);
   if(!mysqli_query($con, $sql))
     echo mysqli_error($con);
   else
-    if($_GET["back"]==0)
+    if($back==0)
       header("Location: ./../../src/components/administration.php");
     else
       header("Location: ./../../src/components/profile.php");

@@ -72,9 +72,37 @@
             width:100px;
             padding: 5px;
         }
-        #add-form label {
+        #add-form label, p {
             color:#427A37;
             font-weight: bold;
+        }
+
+        table {
+            border-collapse: collapse;
+            background-color:#fff;
+        }
+        th, td {
+            border-bottom: 1px solid #427A37;
+        }
+        th, td {
+            padding:10px;
+        }
+
+        .div-table {
+            border: 2px solid #427A37;
+            padding: 35px;
+            background-color:#fff;
+            border-radius: 4px;
+        }
+
+        #in-voc-content {
+            width:528px;
+            height: 400px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-content: center;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -127,10 +155,36 @@
                         <button id="add-word-button" onClick="addModule">Add word</button>
                     </form>
                 </div>
-                <div>
-                
+                <div id="in-voc-content">
+                    <div id="div-table">
+                        <p>My words:</p>
+                        <?php
+                            $sql = "SELECT `words`.`pl_word` AS PL, `words`.`eng_word` AS ENG, `modules`.`name` AS moduleName FROM `words` JOIN `modules` ON `modules`.`id` = `words`.`mod_id`;";
+                            $result = mysqli_query($con, $sql); 
+                            
+                            echo "<table>";
+        
+                            
+                            echo <<<TABLE
+                            <tr>
+                            <th>Polish word</th>
+                            <th>English word</th>
+                            <th>Module</th>
+                            </tr>
+TABLE;
+                            
+                            while ($row = mysqli_fetch_assoc($result)) {    
+                                echo <<<ROW
+                                <tr>
+                                <td>$row[PL]</td>
+                                <td>$row[ENG]</td>
+                                <td>$row[moduleName]</td>
+ROW;
+                            }
+                        ?>
+                    </div>
                 </div>
-            </div>
+
         </content>
     </div>
 </body>
