@@ -159,7 +159,8 @@
                     <div id="div-table">
                         <p>My words:</p>
                         <?php
-                            $sql = "SELECT `words`.`pl_word` AS PL, `words`.`eng_word` AS ENG, `modules`.`name` AS moduleName FROM `words` JOIN `modules` ON `modules`.`id` = `words`.`mod_id`;";
+                            $userid = $_SESSION["userid"];
+                            $sql = "SELECT `words`.`pl_word` AS PL, `words`.`eng_word` AS ENG, `modules`.`name` AS moduleName FROM `words` JOIN `modules` ON `modules`.`id` = `words`.`mod_id` WHERE `modules`.`owner_id` = \"$userid\";";
                             $result = mysqli_query($con, $sql); 
                             
                             echo "<table>";
