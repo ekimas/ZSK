@@ -16,22 +16,51 @@
     <link rel="shortcut icon" href="../assets/favicon.ico">
 
     <style>
-    table {
-        border-collapse: collapse;
-        background-color:#fff;
+    content {
+        justify-content: start;
     }
-    th, td {
-        border-bottom: 1px solid #427A37;
+    #flash-content {
+        display:flex;
+        flex-direction: column;
+        min-height:400px ;
+        min-width: 600px;
     }
-    th, td {
-        padding:10px;
+    .search-div {
+        display:flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        height:50px;
+        width:100%;
+        margin-top: 20px;
     }
-
-    .div-table {
-        border: 2px solid #427A37;
-        padding: 35px;
-        background-color:#fff;
-        border-radius: 4px;
+    form input {
+        margin: 0 10px 10px 10px;
+        box-shadow: none;
+        height: 20px;
+        width: 300px;
+        padding: 5px;
+        border:none;
+        border-bottom: 2px solid #427A37;
+        outline: none;
+        color: #427A37;
+    }
+    #search-button {
+        height: 50px;
+        width: 150px;
+        padding: 10px;
+        font-size: 1em;
+        border-radius: 3px;
+        cursor: pointer;
+        border-style: none;
+        background-color:#427A37 ;
+        font-weight: bold;
+        color: #fff;
+        transition: color 0.3s, background-color 0.3s;
+    }
+    #search-button:hover {
+        color:#427A37;
+        background-color:  #E3AF34;
     }
     </style>
 </head>
@@ -53,11 +82,23 @@
     </nav>
     <div class="main-div">   
         <content>
+            <div id="flash-content">
+                <div class="search-div">
+                    <form action="./../../scripts/search_flash.php" method="get">
+                        <input type="text" placeholder="Search..." name="search">
+                        <button type="submit" id="search-button">Search</button>
+                    </form>
+                    <?php
+                        if(isset($_GET["null"]))
+                        {
+                            echo '<span style="color:red;text-align:center;">Searching phrase ca not be empty</span>';
+                        }
+                    ?>
+                </div>
+                <div id="search-result">
 
-<?php    
-    echo "Flashcards";
-?>
-
+                </div>
+            </div>
         </content>
     </div>
 </body>

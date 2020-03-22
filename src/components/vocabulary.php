@@ -128,7 +128,7 @@
                 <div id="button-content-div">
                     <form action="./../../scripts/add_module.php" method="post" id="add-form">
                         <input type="text" placeholder="Module name" name="moduleName">
-                        <button id="add-module-button" onClick="addModule">Add module</button>
+                        <button id="add-module-button">Add module</button>
                     </form>
                 </div>
                 <?php
