@@ -69,7 +69,7 @@
             border: 1px solid rgba(0,0,0,0.15);
             box-shadow: none;
             height: 30px;
-            width:100px;
+            width:150px;
             padding: 5px;
         }
         #add-form label, p {
@@ -160,7 +160,7 @@
                         <p>My words:</p>
                         <?php
                             $userid = $_SESSION["userid"];
-                            $sql = "SELECT `words`.`pl_word` AS PL, `words`.`eng_word` AS ENG, `modules`.`name` AS moduleName FROM `words` JOIN `modules` ON `modules`.`id` = `words`.`mod_id` WHERE `modules`.`owner_id` = \"$userid\";";
+                            $sql = "SELECT `words`.`id` AS id, `words`.`pl_word` AS PL, `words`.`eng_word` AS ENG, `modules`.`name` AS moduleName FROM `words` JOIN `modules` ON `modules`.`id` = `words`.`mod_id` WHERE `modules`.`owner_id` = \"$userid\";";
                             $result = mysqli_query($con, $sql); 
                             
                             echo "<table>";
@@ -168,18 +168,23 @@
                             
                             echo <<<TABLE
                             <tr>
-                            <th>Polish word</th>
-                            <th>English word</th>
-                            <th>Module</th>
+                                <th>Polish word</th>
+                                <th>English word</th>
+                                <th>Module</th>
+                                <th></th>
                             </tr>
 TABLE;
                             
                             while ($row = mysqli_fetch_assoc($result)) {    
                                 echo <<<ROW
                                 <tr>
-                                <td>$row[PL]</td>
-                                <td>$row[ENG]</td>
-                                <td>$row[moduleName]</td>
+                                    <td>$row[PL]</td>
+                                    <td>$row[ENG]</td>
+                                    <td>$row[moduleName]</td>
+                                    <td>
+                                    <a href="../../scripts/delete_word.php/?id=$row[id]"><button>DELETE</button></a>
+                                    </td>
+                                </tr>
 ROW;
                             }
                         ?>
