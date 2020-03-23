@@ -48,7 +48,7 @@
                     if(isset($_SESSION["nick"]))
                     echo '<div class="user-name"><p>'.$_SESSION["nick"]."</p></div>";
                 ?>
-                <a href="#"><img src="../assets/user.png" alt="User" id="user-img"></a>
+                <a href="./profile.php"><img src="../assets/user.png" alt="User" id="user-img"></a>
                 <form action="../../scripts/logout.php" method="get"><button class="nav-button logout-button">Logout</button></form>
             </div>
         </nav>

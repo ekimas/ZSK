@@ -34,8 +34,8 @@
         width:100%;
         margin-top: 20px;
     }
-    form input {
-        margin: 0 10px 10px 10px;
+    input {
+        margin: 10px;
         box-shadow: none;
         height: 20px;
         width: 300px;
@@ -63,6 +63,9 @@
         background-color:  #E3AF34;
     }
     </style>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 </head>
 <body>
     <nav>
@@ -70,7 +73,7 @@
         <div class="button-div">
             <?php if($_SESSION["auth"]==1) echo '<a href="./administration.php"><button class="nav-button">Administration</button></a>'?>
             <a href="./vocabulary.php"><button class="nav-button">Vocabulary</button></a>
-            <a href="#"><button class="nav-button">Flashcards</button></a>
+            <a href="./flashcards.php"><button class="nav-button">Flashcards</button></a>
             <a href="./game.php"><button class="nav-button">Game</button></a>
             <?php
                 if(isset($_SESSION["nick"]))
@@ -84,22 +87,55 @@
         <content>
             <div id="flash-content">
                 <div class="search-div">
-                    <form action="./../../scripts/search_flash.php" method="get">
-                        <input type="text" placeholder="Search..." name="search">
-                        <button type="submit" id="search-button">Search</button>
-                    </form>
+                        <input type="text" placeholder="Search..." name="search" id="search-input">
+                        <button id="search-button" onclick="search()">Search</button>
+                </div>
                     <?php
                         if(isset($_GET["null"]))
                         {
-                            echo '<span style="color:red;text-align:center;">Searching phrase ca not be empty</span>';
+                            echo '<span style="color:red;text-align:center;">Searching phrase can not be empty</span>';
                         }
                     ?>
-                </div>
                 <div id="search-result">
-
+                    <table id='userTable'>
+                    </table>
                 </div>
             </div>
         </content>
     </div>
+    <script>
+        function search() {
+        var search = document.getElementById("search-input").value;
+        console.log(search);
+
+        $(document).ready(function(){
+            $.ajax({
+                url: './../../scripts/search_flash.php',
+                type: 'POST',
+                data: ({search: search}),
+                dataType: 'JSON',
+                success: function(response){
+                    console.log(response);
+                    var len = response.length;
+                    console.log(len);
+                    for(var i=0; i<len; i++){
+                        var id = response[i].id;
+                        var moduleName = response[i].name;
+                        var owner = response[i].owner;
+
+                        var tr_str = "<tr>" +
+                            "<td align='center'>" + id + "</td>" +
+                            "<td align='center'>" + moduleName + "</td>" +
+                            "<td align='center'>" + owner + "</td>" +
+                            "</tr>";
+
+                        $("#userTable").append(tr_str);
+                    }
+
+                }
+            });
+        });
+        }
+    </script>
 </body>
 </html>

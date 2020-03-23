@@ -42,7 +42,7 @@
             <?php if($_SESSION["auth"]==1) echo '<a href="./administration.php"><button class="nav-button">Administration</button></a>'?>
             <a href="./vocabulary.php"><button class="nav-button">Vocabulary</button></a>
             <a href="./flashcards.php"><button class="nav-button">Flashcards</button></a>
-            <a href="#"><button class="nav-button">Game</button></a>
+            <a href="./game.php"><button class="nav-button">Game</button></a>
             <?php
                 if(isset($_SESSION["nick"]))
                 echo '<div class="user-name"><p>'.$_SESSION["nick"]."</p></div>";

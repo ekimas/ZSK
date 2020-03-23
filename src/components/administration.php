@@ -39,7 +39,7 @@
     <nav>
         <a href="../../index.php"><img src="../assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
         <div class="button-div">
-            <?php if($_SESSION["auth"]==1) echo '<a href="#"><button class="nav-button">Administration</button></a>'?>
+            <?php if($_SESSION["auth"]==1) echo '<a href="./administration.php"><button class="nav-button">Administration</button></a>'?>
             <a href="./vocabulary.php"><button class="nav-button">Vocabulary</button></a>
             <a href="./flashcards.php"><button class="nav-button">Flashcards</button></a>
             <a href="./game.php"><button class="nav-button">Game</button></a>
