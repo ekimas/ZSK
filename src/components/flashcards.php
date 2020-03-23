@@ -62,6 +62,31 @@
         color:#427A37;
         background-color:  #E3AF34;
     }
+
+    #user-table {
+        border-collapse: collapse;
+        background-color:#fff;
+    }
+    th, td {
+        border-bottom: 1px solid #427A37;
+        padding:10px;
+    }
+
+    #search-result {
+        border: 2px solid #427A37;
+        padding: 35px;
+        background-color:#fff;
+        border-radius: 4px;
+    }
+
+    #in-flash-content {
+        width:528px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        margin: 30px auto 0 auto;
+    }
     </style>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -87,18 +112,20 @@
         <content>
             <div id="flash-content">
                 <div class="search-div">
-                        <input type="text" placeholder="Search..." name="search" id="search-input">
+                        <input type="text" placeholder="Search module..." name="search" id="search-input">
                         <button id="search-button" onclick="search()">Search</button>
                 </div>
-                    <?php
-                        if(isset($_GET["null"]))
-                        {
-                            echo '<span style="color:red;text-align:center;">Searching phrase can not be empty</span>';
-                        }
-                    ?>
-                <div id="search-result">
-                    <table id='userTable'>
-                    </table>
+                    
+                    <span id="info-span" style="color:red; text-align:center; margin-top:5px; visibility:hidden;">Searching phrase can not be empty</span>
+                                
+                <div id="in-flash-content">
+                    <div id="search-result">
+                        <table id='userTable'>
+                            <th>ID</th>
+                            <th>Module name</th>
+                            <th>Owner</th>
+                        </table>
+                    </div>
                 </div>
             </div>
         </content>
@@ -107,35 +134,55 @@
         function search() {
         var search = document.getElementById("search-input").value;
         console.log(search);
+        
+        if(search !== "")
+        {
+            document.getElementById("info-span").style.visibility = "hidden";
+            
+            var trAmount = document.querySelectorAll(".tr-result");
+            console.log(trAmount.length+"trA");
+            for(let i=0; i<trAmount.length; i++)
+            {
+                trAmount[i].remove();
+            }
+            
+            $(document).ready(function(){
+                $.ajax({
+                    url: './../../scripts/search_flash.php',
+                    type: 'POST',
+                    data: ({search: search}),
+                    dataType: 'JSON',
+                    success: function(response){
+                        console.log(response);
+                        var len = response.length;
+                        console.log(len);
+                        for(var i=0; i<len; i++){
+                            var id = response[i].id;
+                            var moduleName = response[i].name;
+                            var owner = response[i].owner;
 
-        $(document).ready(function(){
-            $.ajax({
-                url: './../../scripts/search_flash.php',
-                type: 'POST',
-                data: ({search: search}),
-                dataType: 'JSON',
-                success: function(response){
-                    console.log(response);
-                    var len = response.length;
-                    console.log(len);
-                    for(var i=0; i<len; i++){
-                        var id = response[i].id;
-                        var moduleName = response[i].name;
-                        var owner = response[i].owner;
+                            var tr_str = '<tr class="tr-result">' +
+                                "<td align='center'>" + id + "</td>" +
+                                "<td align='center'>" + moduleName + "</td>" +
+                                "<td align='center'>" + owner + "</td>" +
+                                "</tr>";
 
-                        var tr_str = "<tr>" +
-                            "<td align='center'>" + id + "</td>" +
-                            "<td align='center'>" + moduleName + "</td>" +
-                            "<td align='center'>" + owner + "</td>" +
-                            "</tr>";
+                            $("#userTable").append(tr_str);
+                        }
 
-                        $("#userTable").append(tr_str);
                     }
-
-                }
+                });
             });
-        });
+        } else {
+        document.getElementById("info-span").style.visibility = "visible";
+        var trAmount = document.querySelectorAll(".tr-result");
+            console.log(trAmount.length+"trA");
+            for(let i=0; i<trAmount.length; i++)
+            {
+                trAmount[i].remove();
+            }
         }
+    } 
     </script>
 </body>
 </html>

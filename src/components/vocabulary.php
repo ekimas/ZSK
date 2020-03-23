@@ -83,11 +83,9 @@
         }
         th, td {
             border-bottom: 1px solid #427A37;
-        }
-        th, td {
             padding:10px;
         }
-
+        
         .div-table {
             border: 2px solid #427A37;
             padding: 35px;
