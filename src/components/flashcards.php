@@ -71,12 +71,43 @@
         border-bottom: 1px solid #427A37;
         padding:10px;
     }
+    td {
+        display:flex;
+        flex-direction: row;
+    }
+    .table-static-text {
+        display:block;
+        width: 150px;
+    }
+    .table-static-text:first-child, .table-static-text:nth-child(2) {
+        width: 50px;
+    }
+    .table-static-text:nth-child(odd) {
+        font-weight: bold;
+        color:#427A37;
+    }
+
+    table button {
+        padding:5px;
+        border: 1px solid #427A37;
+        background-color: #fff;
+        color: #427A37;
+        font-weight: bold;
+        transition: color 0.2s, border 0.2s;
+    }
+    table button:hover {
+        color: #E3AF34;
+        border: 1px solid #E3AF34;
+        background-color: #e2e2e2;
+        cursor: pointer;
+    }
 
     #search-result {
         border: 2px solid #427A37;
         padding: 35px;
         background-color:#fff;
         border-radius: 4px;
+        visibility: hidden;
     }
 
     #in-flash-content {
@@ -121,9 +152,6 @@
                 <div id="in-flash-content">
                     <div id="search-result">
                         <table id='userTable'>
-                            <th>ID</th>
-                            <th>Module name</th>
-                            <th>Owner</th>
                         </table>
                     </div>
                 </div>
@@ -162,10 +190,11 @@
                             var owner = response[i].owner;
 
                             var tr_str = '<tr class="tr-result">' +
-                                "<td align='center'>" + id + "</td>" +
-                                "<td align='center'>" + moduleName + "</td>" +
-                                "<td align='center'>" + owner + "</td>" +
-                                "</tr>";
+                                "<td align='center'><span class='table-static-text'>ID: </span> <span class='table-static-text'>" + id + 
+                                "</span><span class='table-static-text'> Module: </span> <span class='table-static-text'>" + moduleName + 
+                                "</span><span class='table-static-text'> Owner: </span> <span class='table-static-text'>" + owner + "</span>" + 
+                                " <a href='./chosen.php?id=" + id + "'><button>CHOOSE</button></a></td>" +
+                            "</tr>";
 
                             $("#userTable").append(tr_str);
                         }
@@ -173,6 +202,8 @@
                     }
                 });
             });
+
+            document.getElementById("search-result").style.visibility = "visible";
         } else {
         document.getElementById("info-span").style.visibility = "visible";
         var trAmount = document.querySelectorAll(".tr-result");

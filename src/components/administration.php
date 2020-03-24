@@ -26,6 +26,20 @@
     th, td {
         padding:10px;
     }
+    table button {
+        padding:5px;
+        border: 1px solid #427A37;
+        background-color: #fff;
+        color: #427A37;
+        font-weight: bold;
+        transition: color 0.2s, border 0.2s;
+    }
+    table button:hover {
+        color: #E3AF34;
+        border: 1px solid #E3AF34;
+        background-color: #e2e2e2;
+        cursor: pointer;
+    }
 
     .div-table {
         border: 2px solid #427A37;
