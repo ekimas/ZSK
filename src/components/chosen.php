@@ -22,10 +22,10 @@
         height: 100%;
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
     }
-    #flash {
+    #flash-front, #flash-back{
         display:flex;
         flex-direction: column;
         justify-content:center;
@@ -34,7 +34,14 @@
         align-items:center;
         background-color: #fff;
         border-radius: 10px;
+        text-decoration:none;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size:1.5em;
     }
+    #flash:hover {
+        cursor: pointer;
+    }
+
     #left, #right {
         height:50px;
         width:50px;
@@ -43,15 +50,22 @@
         display:flex;
         justify-content:center;
         align-items:center;
-        background-color:#427A37;
+        background-color:#fff;
         font-weight:bold;
         border-radius:10px;
-        color: #fff;
+        color: #427A37;
+        border: 2px solid #427A37;
     }
-    #left:hover {
-        border-color:#E3AF34;
-        background-color:#e2e2e2;
-        color:#E3AF34;
+    #left:hover, #right:hover {
+        color: #E3AF34;
+        border: 2px solid #E3AF34;
+        background-color: #e2e2e2;
+    }
+    #buttons-div {
+        display: flex;
+        flex-direction: row;
+        margin-top:20px;
+        margin-bottom:20px;
     }
     </style>
 
@@ -76,15 +90,22 @@
     </nav>
     <div class="main-div">   
         <content>
-            <button id="left"><</button>
-            <div id="flash">
-                flash
+            <div id="flash-front">
+                
             </div>
-            <button id="right">></button>
+            <div id="flash-back">
+                
+            </div>
+            <div id="buttons-div">
+                <button type="button" id="left" onclick="left()"><</button>
+                <button type="button" id="right" onclick="right()">></button>
+            </div>
+            
         </content>
     </div>
     <script>
-        var flash = 0;
+        document.getElementById("flash-back").style.display = "none";
+        
         var moduleW;
         var url = String(window.location.href);
 
@@ -103,55 +124,66 @@
                 dataType: 'JSON',
                 success: function(response){
                     var len = response.length;
-
-                    // rand = randWord(len-1);
-                    // queue(len);
-                    // document.getElementById("flash").innerText = response[0].pl;
+                    length = len;
+                    console.log(response);
                     moduleW = JSON.stringify(response);
                     see();
                 }
             });
         });
 
+        document.getElementById("flash-front").addEventListener("click", function(){ 
+            document.getElementById("flash-back").style.display = "flex";
+            document.getElementById("flash-front").style.display = "none";
+        });
+
+        document.getElementById("flash-back").addEventListener("click", function(){ 
+            document.getElementById("flash-front").style.display = "flex";
+            document.getElementById("flash-back").style.display = "none";
+        });
+
+        var length;
+        var number = 0;
         function see(){
             moduleW = JSON.parse(moduleW);
-            console.log(moduleW);
-            document.getElementById("flash").innerText = moduleW[0].pl;
+
+            document.getElementById("flash-front").innerHTML = moduleW[number].pl+'<img src="./../assets/flagapl.jpg" alt="PL" style="margin:10px; height:40px;">';
+            document.getElementById("flash-back").innerHTML = moduleW[number].eng+'<img src="./../assets/flagaGB.jpg" alt="PL" style="margin:10px; height:40px;">';
+
             }
+        function left() {
+            if(number == 0)
+            {
+                number = 0;
+                document.getElementById("flash-front").style.display = "flex";
+                document.getElementById("flash-back").style.display = "none";
+                document.getElementById("flash-front").innerHTML = moduleW[number].pl+'<img src="./../assets/flagapl.jpg" alt="PL" style="margin:10px; height:40px;">';;
+                document.getElementById("flash-back").innerHTML = moduleW[number].eng+'<img src="./../assets/flagaGB.jpg" alt="PL" style="margin:10px; height:40px;">';
+            } else {
+                number--;
+                document.getElementById("flash-front").style.display = "flex";
+                document.getElementById("flash-back").style.display = "none";
+                document.getElementById("flash-front").innerHTML = moduleW[number].pl+'<img src="./../assets/flagapl.jpg" alt="PL" style="margin:10px; height:40px;">';;
+                document.getElementById("flash-back").innerHTML = moduleW[number].eng+'<img src="./../assets/flagaGB.jpg" alt="PL" style="margin:10px; height:40px;">';
+            }
+        }
+        function right() {
+            if(number == length-1)
+            {
+                number = length-1;
+                document.getElementById("flash-front").style.display = "flex";
+                document.getElementById("flash-back").style.display = "none";
+                document.getElementById("flash-front").innerHTML = moduleW[number].pl+'<img src="./../assets/flagapl.jpg" alt="PL" style="margin:10px; height:40px;">';;
+                document.getElementById("flash-back").innerHTML = moduleW[number].eng+'<img src="./../assets/flagaGB.jpg" alt="PL" style="margin:10px; height:40px;">';
+            } else {
+                number++;
+                document.getElementById("flash-front").style.display = "flex";
+                document.getElementById("flash-back").style.display = "none";
+                document.getElementById("flash-front").innerHTML = moduleW[number].pl+'<img src="./../assets/flagapl.jpg" alt="PL" style="margin:10px; height:40px;">';;
+                document.getElementById("flash-back").innerHTML = moduleW[number].eng+'<img src="./../assets/flagaGB.jpg" alt="PL" style="margin:10px; height:40px;">';
+            }
+        }
 
-
-        // function queue(len) {
-        //     var q = [];
-        //     for(let i = 0; i<len; i++)
-        //     {
-        //         q[i] = Math.floor(Math.random()*(len-1));
-        //         console.log("Właściwe q[i] - "+q[i]+" - "+i);
-        //         for(let j = 0; j<i; j++)
-        //         {
-        //             console.log(q[i]+" "+q[j])
-        //             if(q[i] == q[j])
-        //             {
-        //                 while() 
-        //                 {
-        //                     q[i] = randWord(len);
-        //                     console.log("Wylosowane "+q[i]);
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     console.log(q);
-
-        //     function check() {
-        //         console.log(q);
-
-        //     }
-        // }
-        
-        // function randWord(len) {
-        //     var rand = Math.floor(Math.random()*(len-1));
-
-        //     return rand;
-        // }
     </script>
 </body>
 </html>
