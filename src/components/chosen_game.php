@@ -28,8 +28,6 @@
 
     /* Memory */
     #plansza{
-        width: 444px;
-        height: 444px;
         margin: 30px auto;
         display: flex;
         flex-wrap: wrap;
@@ -39,7 +37,7 @@
     }
 
     .mem {
-        height: 200px;
+        height: 100px;
         width: 200px;
         margin: 10px;
         border: 1px solid black;
@@ -48,15 +46,45 @@
         background-size: cover;
         perspective: 1000px;
         transition: transform 1s;
+        display:flex;
+        align-items:center;
+        justify-content:center;
     }
 
     .clicked {
         perspective: 1000px;
         transition: transform 1s;
     }
+
+    #win {
+        visibility:hidden;
+        color: #427A37;
+        font-size: 2em;
+    }
+
+    .button-a {
+        visibility:hidden;
+        height: 50px;
+        width: 150px;
+        padding: 10px;
+        font-size: 1em;
+        border-radius: 3px;
+        cursor: pointer;
+        border-style: none;
+        background-color:#427A37 ;
+        font-weight: bold;
+        color: #fff;
+        transition: color 0.3s, background-color 0.3s;
+        margin: 10px auto 0 auto;
+    }
+    .button-a:hover {
+        color:#427A37;
+        background-color:  #E3AF34;
+    }
     </style>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="./../js/memory.js"></script>
 
 </head>
@@ -79,38 +107,16 @@
     <div class="main-div">   
         <content>
             <div id="plansza"></div>
-            
+            <div id="win">You win!</div>
+            <a href="./game.php" ><button class="button-a">BACK</button></a>
+            <button class="button-a" onclick="redirect()">TRY AGAIN</button>
         </content>
     </div>
-
-    <script>        
-        var moduleW;
-        var url = String(window.location.href);
-
-        var id = "";
-        for(let i=url.search("=")+1; i<=url.length-1; i++)
-        {
-            id += url[i];
+    <script>
+        function redirect() {
+            var link = window.location.href;
+            window.location.replace(link);
         }
-        id = Number(id);
-
-        $(document).ready(function(){
-            $.ajax({
-                url: './../../scripts/search_flash_2.php',
-                type: 'POST',
-                data: ({id: id}),
-                dataType: 'JSON',
-                success: function(response){
-                    var len = response.length;
-                    length = len;
-                    console.log(response);
-                    moduleW = JSON.stringify(response);
-                    console.log(moduleW);
-                }
-            });
-        });
-
-
     </script>
 </body>
 </html>
