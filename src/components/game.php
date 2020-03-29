@@ -63,7 +63,7 @@
         background-color:  #E3AF34;
     }
 
-    #user-table {
+    #gameTable {
         border-collapse: collapse;
         background-color:#fff;
     }
@@ -71,12 +71,43 @@
         border-bottom: 1px solid #427A37;
         padding:10px;
     }
+    td {
+        display:flex;
+        flex-direction: row;
+    }
+    .table-static-text {
+        display:block;
+        width: 150px;
+    }
+    .table-static-text:first-child, .table-static-text:nth-child(2) {
+        width: 50px;
+    }
+    .table-static-text:nth-child(odd) {
+        font-weight: bold;
+        color:#427A37;
+    }
+
+    table button {
+        padding:5px;
+        border: 1px solid #427A37;
+        background-color: #fff;
+        color: #427A37;
+        font-weight: bold;
+        transition: color 0.2s, border 0.2s;
+    }
+    table button:hover {
+        color: #E3AF34;
+        border: 1px solid #E3AF34;
+        background-color: #e2e2e2;
+        cursor: pointer;
+    }
 
     #search-result {
         border: 2px solid #427A37;
         padding: 35px;
         background-color:#fff;
         border-radius: 4px;
+        visibility: hidden;
     }
 
     #in-game-content {
@@ -88,6 +119,8 @@
         margin: 30px auto 0 auto;
     }
     </style>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
     <nav>
@@ -110,15 +143,12 @@
         <div id="game-content">
                 <div class="search-div">
                         <input type="text" placeholder="Search game..." name="search" id="search-input">
-                        <button id="search-button" onclick="search()">Search</button>
+                        <button id="search-button" onclick="searchGame()">Search</button>
                 </div>
 
                 <div id="in-game-content">
                     <div id="search-result">
                         <table id='gameTable'>
-                            <th>ID</th>
-                            <th>Module game</th>
-                            <th>Owner</th>
                         </table>
                     </div>
                 </div>
@@ -126,45 +156,51 @@
         </content>
     </div>
     <script>
-        function search() {
+        function searchGame() {
         var search = document.getElementById("search-input").value;
         console.log(search);
 
-        var trAmount = document.querySelectorAll(".tr-result");
-        console.log(trAmount.length+"trA");
-        for(let i=0; i<trAmount.length; i++)
+        if(search !== "")
         {
-            trAmount[i].remove();
-        }
-        
-        $(document).ready(function(){
-            $.ajax({
-                url: './../../scripts/search_flash.php',
-                type: 'POST',
-                data: ({search: search}),
-                dataType: 'JSON',
-                success: function(response){
-                    console.log(response);
-                    var len = response.length;
-                    console.log(len);
-                    for(var i=0; i<len; i++){
-                        var id = response[i].id;
-                        var moduleName = response[i].name;
-                        var owner = response[i].owner;
 
-                        var tr_str = '<tr class="tr-result">' +
-                            "<td align='center'>" + id + "</td>" +
-                            "<td align='center'>" + moduleName + "</td>" +
-                            "<td align='center'>" + owner + "</td>" +
+            var trAmount = document.querySelectorAll(".tr-result");
+            console.log(trAmount.length+"trA");
+            for(let i=0; i<trAmount.length; i++)
+            {
+                trAmount[i].remove();
+            }
+            
+            $(document).ready(function(){
+                $.ajax({
+                    url: './../../scripts/search_flash.php',
+                    type: 'POST',
+                    data: ({search: search}),
+                    dataType: 'JSON',
+                    success: function(response){
+                        console.log(response);
+                        var len = response.length;
+                        console.log(len);
+                        for(var i=0; i<len; i++){
+                            var id = response[i].id;
+                            var moduleName = response[i].name;
+                            var owner = response[i].owner;
+
+                            var tr_str = '<tr class="tr-result">' +
+                                "<td align='center'><span class='table-static-text'>ID: </span> <span class='table-static-text'>" + id + 
+                                "</span><span class='table-static-text'> Module: </span> <span class='table-static-text'>" + moduleName + 
+                                "</span><span class='table-static-text'> Owner: </span> <span class='table-static-text'>" + owner + "</span>" + 
+                                " <a href='./chosen_game.php?id=" + id + "'><button>CHOOSE</button></a></td>" +
                             "</tr>";
 
-                        $("#userTable").append(tr_str);
-                    }
+                            $("#gameTable").append(tr_str);
+                        }
 
-                }
+                    }
+                });
             });
-        });
+            document.getElementById("search-result").style.visibility = "visible";
         }
+    }
     </script>
 </body>
 </html>

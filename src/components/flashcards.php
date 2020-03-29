@@ -63,7 +63,7 @@
         background-color:  #E3AF34;
     }
 
-    #user-table {
+    #userTable {
         border-collapse: collapse;
         background-color:#fff;
     }
