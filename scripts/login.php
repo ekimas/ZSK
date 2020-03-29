@@ -23,7 +23,10 @@
             $_SESSION["nick"] = $nick;
             $_SESSION["auth"] = $auth;
             header("Location: ../main.php");          
-        } 
+        }
+
+        header('Location: ../index.php?t=0'); 
+        
     } else {       
         header('Location: ../index.php'); 
     }

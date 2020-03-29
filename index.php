@@ -30,7 +30,14 @@
                     <button name="button" value="0">Login</button>
                     <button name="button" value="1">Registration</button>
                 </div>
+                <?php
+            if(isset($_GET["t"]))
+            {
+                echo '<span style="color:red; margin-top:15px; text-align:center;">Wrong e-mail address or password</span>';
+            }
+            ?>
             </form>
+            
         </content>
     </div>
 </body>

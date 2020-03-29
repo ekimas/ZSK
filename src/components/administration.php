@@ -2,6 +2,7 @@
     session_start();
     if(!isset($_SESSION["userid"])) header("Location: ../../index.php");
     require_once("../../scripts/connect.php");
+    unset($_SESSION["change-id"]);
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -25,6 +26,20 @@
     th, td {
         padding:10px;
     }
+    table button {
+        padding:5px;
+        border: 1px solid #427A37;
+        background-color: #fff;
+        color: #427A37;
+        font-weight: bold;
+        transition: color 0.2s, border 0.2s;
+    }
+    table button:hover {
+        color: #E3AF34;
+        border: 1px solid #E3AF34;
+        background-color: #e2e2e2;
+        cursor: pointer;
+    }
 
     .div-table {
         border: 2px solid #427A37;
@@ -38,13 +53,13 @@
     <nav>
         <a href="../../index.php"><img src="../assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
         <div class="button-div">
-            <?php if($_SESSION["auth"]==1) echo '<a href="#"><button class="nav-button">Administration</button></a>'?>
-            <button class="nav-button">Vocabulary</button>
-            <button class="nav-button">Flashcards</button>
-            <button class="nav-button">Game</button>
+            <?php if($_SESSION["auth"]==1) echo '<a href="./administration.php"><button class="nav-button">Administration</button></a>'?>
+            <a href="./vocabulary.php"><button class="nav-button">Vocabulary</button></a>
+            <a href="./flashcards.php"><button class="nav-button">Flashcards</button></a>
+            <a href="./game.php"><button class="nav-button">Game</button></a>
             <?php
                 if(isset($_SESSION["nick"]))
-                echo '<div class="user-name">'.$_SESSION["nick"]."</div>";
+                echo '<div class="user-name"><p>'.$_SESSION["nick"]."</p></div>";
             ?>
             <a href="./profile.php"><img src="../assets/user.png" alt="User" id="user-img"></a>
             <form action="../../scripts/logout.php" method="get"><button class="nav-button logout-button">Logout</button></form>
@@ -69,6 +84,9 @@
         <th>Name</th>
         <th>Surname</th>
         <th>Type of profile</th>
+        <th></th>
+        <th></th>
+        <th></th>
     </tr>
 TABLE;
 
@@ -87,6 +105,21 @@ ROW;
             echo "<td>User</td>";
         else echo "<td>Teacher</td>";
     
+    echo <<<BUTTONS
+        <td>   
+        <a href="../../scripts/change_auth.php/?id=$row[id]&back=0"><button>EDIT</button></a>
+        </td>
+
+BUTTONS;
+    echo <<<BUTTONS2
+        
+        <td>
+        <a href="../../scripts/delete_user.php/?id=$row[id]"><button>DELETE</button></a>
+        </td>
+
+BUTTONS2;
+    $_SESSION["change-id"] = $row["id"];
+
     echo "</tr>";
     }
 
