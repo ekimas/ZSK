@@ -35,8 +35,6 @@
         <input type="text" name="name" required>
         
         <button class="reg-button">Register</button>
-
-
     </form>
     <a href="../index.php"><button class="reg-button not-in-form">< Back</button></a>
 
