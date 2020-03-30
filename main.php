@@ -12,11 +12,8 @@
 
     <link rel="stylesheet" href="./src/styles/style.css">
     <link rel="shortcut icon" href="./src/assets/favicon.ico">
-
-
 </head>
 <body>
-
     <nav>
         <a href="./index.php"><img src="./src/assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
         <div class="button-div">

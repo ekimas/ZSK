@@ -110,7 +110,6 @@ if(isset($_GET["id"])) {
     {
         $user = mysqli_fetch_assoc($result1);
 
-
         echo "<h2>Aktualizacja</h2>";
         
         if($back!=1)

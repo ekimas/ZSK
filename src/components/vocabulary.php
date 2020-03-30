@@ -16,76 +16,76 @@
     <link rel="shortcut icon" href="../assets/favicon.ico">
 
     <style>
-        content {
-            justify-content: start;
-        }
-        #voc-content {
-            display:flex;
-            flex-direction: column;
-            min-height:400px ;
-            min-width: 600px;
-        }
-        #button-content-div {
-            height: 100px;
-            min-width: 600px;
-            display:flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            flex-wrap: wrap;
-            align-content: center;
-        }
-        #add-module-button, #add-word-button {
-            height: 50px;
-            width: 150px;
-            padding: 10px;
-            font-size: 1em;
-            border-radius: 3px;
-            cursor: pointer;
-            border-style: none;
-            background-color:#427A37 ;
-            font-weight: bold;
-            color: #fff;
-            transition: color 0.3s, background-color 0.3s;
-        }
-        #add-module-button:hover, #add-word-button:hover {
-            color:#427A37;
-            background-color:  #E3AF34;
-        }
-        #add-form input {
-            margin: 0 30px 10px 10px;
-            border-radius: 4px;
-            border: 1px solid rgba(0,0,0,0.15);
-            box-shadow: none;
-            height: 20px;
-            width: 300px;
-            padding: 5px;
-        }
-        #add-form #shorter-input {
-            width: 150px;
-        }
-        #add-form select {
-            margin: 0 30px 10px 10px;
-            border-radius: 4px;
-            border: 1px solid rgba(0,0,0,0.15);
-            box-shadow: none;
-            height: 30px;
-            width:150px;
-            padding: 5px;
-        }
-        #add-form label, p {
-            color:#427A37;
-            font-weight: bold;
-        }
+    content {
+        justify-content: start;
+    }
+    #voc-content {
+        display:flex;
+        flex-direction: column;
+        min-height:400px ;
+        min-width: 600px;
+    }
+    #button-content-div {
+        height: 100px;
+        min-width: 600px;
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    #add-module-button, #add-word-button {
+        height: 50px;
+        width: 150px;
+        padding: 10px;
+        font-size: 1em;
+        border-radius: 3px;
+        cursor: pointer;
+        border-style: none;
+        background-color:#427A37 ;
+        font-weight: bold;
+        color: #fff;
+        transition: color 0.3s, background-color 0.3s;
+    }
+    #add-module-button:hover, #add-word-button:hover {
+        color:#427A37;
+        background-color:  #E3AF34;
+    }
+    #add-form input {
+        margin: 0 30px 10px 10px;
+        border-radius: 4px;
+        border: 1px solid rgba(0,0,0,0.15);
+        box-shadow: none;
+        height: 20px;
+        width: 300px;
+        padding: 5px;
+    }
+    #add-form #shorter-input {
+        width: 150px;
+    }
+    #add-form select {
+        margin: 0 30px 10px 10px;
+        border-radius: 4px;
+        border: 1px solid rgba(0,0,0,0.15);
+        box-shadow: none;
+        height: 30px;
+        width:150px;
+        padding: 5px;
+    }
+    #add-form label, p {
+        color:#427A37;
+        font-weight: bold;
+    }
 
-        table {
-            border-collapse: collapse;
-            background-color:#fff;
-        }
-        th, td {
-            border-bottom: 1px solid #427A37;
-            padding:10px;
-        }
-        table button {
+    table {
+        border-collapse: collapse;
+        background-color:#fff;
+    }
+    th, td {
+        border-bottom: 1px solid #427A37;
+        padding:10px;
+    }
+    table button {
         padding:5px;
         border: 1px solid #427A37;
         background-color: #fff;
@@ -99,23 +99,23 @@
         background-color: #e2e2e2;
         cursor: pointer;
     }
-        
-        .div-table {
-            border: 2px solid #427A37;
-            padding: 35px;
-            background-color:#fff;
-            border-radius: 4px;
-        }
+    
+    .div-table {
+        border: 2px solid #427A37;
+        padding: 35px;
+        background-color:#fff;
+        border-radius: 4px;
+    }
 
-        #in-voc-content {
-            width:528px;
-            height: 400px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-content: center;
-            margin: 0 auto;
-        }
+    #in-voc-content {
+        width:528px;
+        height: 400px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        margin: 0 auto;
+    }
     </style>
 </head>
 <body>
@@ -176,8 +176,7 @@
                             $result = mysqli_query($con, $sql); 
                             
                             echo "<table>";
-        
-                            
+
                             echo <<<TABLE
                             <tr>
                                 <th>Polish word</th>
@@ -202,7 +201,6 @@ ROW;
                         ?>
                     </div>
                 </div>
-
         </content>
     </div>
 </body>

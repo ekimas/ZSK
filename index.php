@@ -15,11 +15,10 @@
 
 </head>
 <body>
-
-        <nav>
-            <a href="."><img src="./src/assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
-        </nav>
-        <div class="main-div">
+    <nav>
+        <a href="."><img src="./src/assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
+    </nav>
+    <div class="main-div">
         <content>
             <form action="./scripts/login.php" method="post" class="login-form">
                 <label for="mail">MAIL</label>
@@ -30,7 +29,7 @@
                     <button name="button" value="0">Login</button>
                     <button name="button" value="1">Registration</button>
                 </div>
-                <?php
+            <?php
             if(isset($_GET["t"]))
             {
                 echo '<span style="color:red; margin-top:15px; text-align:center;">Wrong e-mail address or password</span>';

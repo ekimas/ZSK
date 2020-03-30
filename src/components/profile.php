@@ -51,27 +51,25 @@
 
 </head>
 <body>
-
-        <nav>
-            <a href="../../index.php"><img src="../assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
-            <div class="button-div">
-                <?php if($_SESSION["auth"]==1) echo '<a href="./administration.php"><button class="nav-button">Administration</button></a>'?>
-                <a href="./vocabulary.php"><button class="nav-button">Vocabulary</button></a>
-                <a href="./flashcards.php"><button class="nav-button">Flashcards</button></a>
-                <a href="./game.php"><button class="nav-button">Game</button></a>
-                <?php
-                    if(isset($_SESSION["nick"]))
-                    echo '<div class="user-name"><p>'.$_SESSION["nick"]."</p></div>";
-                ?>
-                <a href="./profile.php"><img src="../assets/user.png" alt="User" id="user-img"></a>
-                <form action="../../scripts/logout.php" method="get"><button class="nav-button logout-button">Logout</button></form>
-            </div>
-        </nav>
-        <div class="main-div">
+    <nav>
+        <a href="../../index.php"><img src="../assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
+        <div class="button-div">
+            <?php if($_SESSION["auth"]==1) echo '<a href="./administration.php"><button class="nav-button">Administration</button></a>'?>
+            <a href="./vocabulary.php"><button class="nav-button">Vocabulary</button></a>
+            <a href="./flashcards.php"><button class="nav-button">Flashcards</button></a>
+            <a href="./game.php"><button class="nav-button">Game</button></a>
+            <?php
+                if(isset($_SESSION["nick"]))
+                echo '<div class="user-name"><p>'.$_SESSION["nick"]."</p></div>";
+            ?>
+            <a href="./profile.php"><img src="../assets/user.png" alt="User" id="user-img"></a>
+            <form action="../../scripts/logout.php" method="get"><button class="nav-button logout-button">Logout</button></form>
+        </div>
+    </nav>
+    <div class="main-div">
         <content>
-        <div class="div-table">
-            <?php    
-
+            <div class="div-table">
+<?php
     $sql = "SELECT `nickname`, `mail`, `name`, `surname` FROM `users` WHERE `id` LIKE ". $_SESSION["userid"];
     $result = mysqli_query($con, $sql); 
     
@@ -99,14 +97,12 @@ TABLE;
         <td>   
         <a href="../../scripts/change_auth.php/?id=$id&back=$back"><button>EDIT</button></a>
         </td>
-    </tr>
-    
+    </tr>    
 ROW;
     }
-
     
     echo "</table>";
-            ?>
+?>
             </div>
         </content>
     </div>

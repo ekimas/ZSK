@@ -9,8 +9,7 @@
     if($_POST["button"]==1)
     {
         header("Location: ./registration.php");
-    } else if(!empty($mail) && !empty($pass))
-    {
+    } else if(!empty($mail) && !empty($pass)) {
         
         $sql = "SELECT `id`, `nickname`, `auth_id` FROM `users` WHERE `password` LIKE \"$hashPassword\" AND `mail` LIKE \"$mail\"";
        

@@ -140,12 +140,11 @@
     </nav>
     <div class="main-div">   
         <content>
-        <div id="game-content">
+            <div id="game-content">
                 <div class="search-div">
-                        <input type="text" placeholder="Search game..." name="search" id="search-input">
-                        <button id="search-button" onclick="searchGame()">Search</button>
+                    <input type="text" placeholder="Search game..." name="search" id="search-input">
+                    <button id="search-button" onclick="searchGame()">Search</button>
                 </div>
-
                 <div id="in-game-content">
                     <div id="search-result">
                         <table id='gameTable'>
@@ -162,9 +161,9 @@
 
         if(search !== "")
         {
-
             var trAmount = document.querySelectorAll(".tr-result");
             console.log(trAmount.length+"trA");
+
             for(let i=0; i<trAmount.length; i++)
             {
                 trAmount[i].remove();

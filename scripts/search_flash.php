@@ -7,9 +7,8 @@
     $search = $_POST["search"];
     
     if(!empty($search)){
-
         $return_arr = array();
-        
+
         $query = 'SELECT * FROM `modules` WHERE `name` LIKE "%'.$search.'%";';
         $result = mysqli_query($con, $query);
 

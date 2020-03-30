@@ -11,16 +11,12 @@
 
     <link rel="stylesheet" href="../src/styles/style.css">
     <link rel="shortcut icon" href="../src/assets/favicon.ico">
-
-
 </head>
-<body>
-    
+<body>    
     <nav>
         <a href="../index.php"><img src="../src/assets/logo.png" alt="TECHL4NG" id="logo-img"></a>
     </nav>
     <div class="main-div">
-
 
     <form action="" method="post" class="login-form" >
         <label for="mail">MAIL</label>
@@ -33,11 +29,9 @@
         <input type="text" name="surname" required>
         <label for="name">NAME</label>
         <input type="text" name="name" required>
-        
         <button class="reg-button">Register</button>
     </form>
     <a href="../index.php"><button class="reg-button not-in-form">< Back</button></a>
-
 <?php
 function filter($var)
 {
@@ -71,16 +65,12 @@ if (!empty($_POST["mail"]) && !empty($_POST["password"]) && !empty($_POST["nickn
                     echo "Błąd: ". mysqli_connect_errno($con);
                 }
 
-            }
-            else echo '<span style="color:red; margin-top:15px;">This nickname is used.</span>';
-        }
-        else echo '<span style="color:red; margin-top:15px;">This mail is used.</span>';
+            } else echo '<span style="color:red; margin-top:15px;">This nickname is used.</span>';
+        } else echo '<span style="color:red; margin-top:15px;">This mail is used.</span>';
     }
     echo '<span style="color:red; margin-top:15px;">Wrong e-mail address!</span>';
 } 
-    ?>
+?>
     </div>
 </body>
 </html>
-
-

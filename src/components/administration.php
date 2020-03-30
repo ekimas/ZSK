@@ -74,8 +74,6 @@
     $result = mysqli_query($con, $sql); 
 
     echo "<table>";
-    
-
     echo <<<TABLE
     <tr>
         <th>Id</th>
@@ -109,20 +107,16 @@ ROW;
         <td>   
         <a href="../../scripts/change_auth.php/?id=$row[id]&back=0"><button>EDIT</button></a>
         </td>
-
 BUTTONS;
     echo <<<BUTTONS2
         
         <td>
         <a href="../../scripts/delete_user.php/?id=$row[id]"><button>DELETE</button></a>
         </td>
-
 BUTTONS2;
     $_SESSION["change-id"] = $row["id"];
-
     echo "</tr>";
-    }
-
+}
     echo "</table>";
 ?>
             </div>

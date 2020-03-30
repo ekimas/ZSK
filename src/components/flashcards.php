@@ -121,7 +121,6 @@
     </style>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
 </head>
 <body>
     <nav>
@@ -145,10 +144,8 @@
                 <div class="search-div">
                         <input type="text" placeholder="Search module..." name="search" id="search-input">
                         <button id="search-button" onclick="search()">Search</button>
-                </div>
-                    
+                </div>                    
                     <span id="info-span" style="color:red; text-align:center; margin-top:5px; visibility:hidden;">Searching phrase can not be empty</span>
-                                
                 <div id="in-flash-content">
                     <div id="search-result">
                         <table id='userTable'>
@@ -169,6 +166,7 @@
             
             var trAmount = document.querySelectorAll(".tr-result");
             console.log(trAmount.length+"trA");
+            
             for(let i=0; i<trAmount.length; i++)
             {
                 trAmount[i].remove();

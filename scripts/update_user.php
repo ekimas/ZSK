@@ -1,5 +1,4 @@
 <?php
-
  $back =  $_GET["back"];
  echo $back;
 
@@ -23,8 +22,5 @@ if (!empty($_POST['nick']) && !empty($_POST['mail']) && !empty($_POST['name']) &
       header("Location: ./../../src/components/administration.php");
     else
       header("Location: ./../../src/components/profile.php");
-
-
 }
-
 ?>

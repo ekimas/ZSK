@@ -24,7 +24,6 @@
                                 "id" => $id,
                                 "pl" => $pl,
                                 "eng" => $eng);
-                
                 $number++;
             }
 

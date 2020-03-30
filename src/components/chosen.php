@@ -90,17 +90,12 @@
     </nav>
     <div class="main-div">   
         <content>
-            <div id="flash-front">
-                
-            </div>
-            <div id="flash-back">
-                
-            </div>
+            <div id="flash-front"></div>
+            <div id="flash-back"></div>
             <div id="buttons-div">
                 <button type="button" id="left" onclick="left()"><</button>
                 <button type="button" id="right" onclick="right()">></button>
-            </div>
-            
+            </div>            
         </content>
     </div>
     <script>
@@ -108,8 +103,8 @@
         
         var moduleW;
         var url = String(window.location.href);
-
         var id = "";
+
         for(let i=url.search("=")+1; i<=url.length-1; i++)
         {
             id += url[i];
@@ -149,8 +144,8 @@
 
             document.getElementById("flash-front").innerHTML = moduleW[number].pl+'<img src="./../assets/flagapl.jpg" alt="PL" style="margin:10px; height:40px;">';
             document.getElementById("flash-back").innerHTML = moduleW[number].eng+'<img src="./../assets/flagaGB.jpg" alt="PL" style="margin:10px; height:40px;">';
-
             }
+        
         function left() {
             if(number == 0)
             {
@@ -167,6 +162,7 @@
                 document.getElementById("flash-back").innerHTML = moduleW[number].eng+'<img src="./../assets/flagaGB.jpg" alt="PL" style="margin:10px; height:40px;">';
             }
         }
+        
         function right() {
             if(number == length-1)
             {
