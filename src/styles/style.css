@@ -1,8 +1,14 @@
 /*Document*/
+@media (min-height:720px){
+    .main-div {
+        margin: 5px auto 0 auto;
+    }
+}
 body {
     background-color:rgba(227, 175, 34, 0.4);
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
 }
 .main-div {
     height: 100%;
@@ -10,12 +16,15 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin: 5px auto 0 auto;
 }
 
 /*Navigation*/
+@media (min-height:720px){
+    nav {
+        padding-top: 5px;
+    }
+}
 nav {
-    padding-top: 5px;
     height: 15%;
     width: 100%;
     display: flex;
@@ -79,8 +88,14 @@ nav {
 }
 
 /*Content*/
+@media (min-height:720px){
+    content {
+        min-height: 600px;
+    }
+}
+
 content {
-    min-height: 600px;
+    min-height: 400px;
     height: 100%;
     width: 100%;
     display: flex;
